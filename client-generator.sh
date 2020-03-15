@@ -78,7 +78,7 @@ kubeclient::generator::generate_client() {
     CLEANUP_DIRS_STRING="${CLEANUP_DIRS[@]}"
 
     echo "--- Running generator inside container..."
-    docker run -u $(id -u) \
+    docker run --security-opt="label=disable" -u $(id -u) \
 	-e HTTP_PROXY="http://127.0.0.1:7777" \
 	-e HTTPS_PROXY="http://127.0.0.1:7777" \
 	-e http_proxy="http://127.0.0.1:7777" \
